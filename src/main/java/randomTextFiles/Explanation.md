@@ -1,0 +1,2 @@
+# Random bits
+Files are from the pregenerated random file archive at Random.org, the random generator measures background radiation. This should make the bits suitable for simulating parts of quantum mechanics, assuming background radiation "is random" as a result of the same quantum processes. 

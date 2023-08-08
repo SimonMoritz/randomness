@@ -12,6 +12,6 @@ public class TestRandomness {
         System.out.println("amount of bits are");
         System.out.println(bits.length);
         assert(bits.length == 12);
-        System.out.println("FUCK JA");
+        System.out.println("JA");
     }
 }
