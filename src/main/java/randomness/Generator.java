@@ -3,6 +3,8 @@ package randomness;
 import framework.Randomness;
 import framework.RetrievalStrategy;
 
+import java.io.IOException;
+
 public class Generator implements Randomness {
     private final RetrievalStrategy retrievalStrategy;
     public Generator(RetrievalStrategy retrievalStrategy){
@@ -10,7 +12,12 @@ public class Generator implements Randomness {
     }
     @Override
     public int[] getRandomBits(int amount) {
-        int[] bits = retrievalStrategy.getBitsFromExternalRG(amount);
+        int[] bits;
+        try {
+            bits = retrievalStrategy.getBitsFromExternalRG(amount);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         return bits;
     }
 
