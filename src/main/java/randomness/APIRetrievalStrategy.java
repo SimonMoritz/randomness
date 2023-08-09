@@ -44,7 +44,6 @@ public class APIRetrievalStrategy implements RetrievalStrategy {
                 "}, \"id\": " + id + "}";
 
         JsonObject jsonObject = new JsonParser().parse(load).getAsJsonObject();
-        System.out.println(jsonObject.toString());
         try {
             HttpClient client = HttpClient.newHttpClient();
             HttpRequest request = HttpRequest.newBuilder()
@@ -54,9 +53,7 @@ public class APIRetrievalStrategy implements RetrievalStrategy {
                     .build();
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
             JsonObject responseLoad = new JsonParser().parse(response.body()).getAsJsonObject();
-            System.out.println("here");
             JsonElement j = responseLoad.get("result").getAsJsonObject().get("random").getAsJsonObject().get("data");
-            System.out.println(j);
             JsonArray arrayOfBits = j.getAsJsonArray().get(0).getAsJsonArray();
             for (int i=0; i<amount; i++){
                 bits[i] = arrayOfBits.get(i).getAsInt();

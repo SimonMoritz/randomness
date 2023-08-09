@@ -1,3 +1,4 @@
+import framework.Randomness;
 import framework.RetrievalStrategy;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -81,6 +82,17 @@ public class TestRandomness {
         APIRetrievalStrategy r = new APIRetrievalStrategy();
         int[] bits = r.getBitsFromExternalRG(20);
         assert (bits.length == 20);
+        for (int b : bits){
+            assert (b == 0 || b == 1);
+        }
+    }
+
+    @Test
+    public void shouldUseAPIStrategyCorrectly(){
+        RetrievalStrategy r = new APIRetrievalStrategy();
+        Randomness g = new Generator(r);
+        int[] bits = g.getRandomBits(6);
+        assert (bits.length == 6);
         for (int b : bits){
             assert (b == 0 || b == 1);
         }
