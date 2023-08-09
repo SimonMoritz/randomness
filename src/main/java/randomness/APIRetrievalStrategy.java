@@ -43,7 +43,7 @@ public class APIRetrievalStrategy implements RetrievalStrategy {
                 "\"base\": 2" +
                 "}, \"id\": " + id + "}";
 
-        JsonObject jsonObject = new JsonParser().parse(load).getAsJsonObject();
+        JsonObject jsonObject = JsonParser.parseString(load).getAsJsonObject();
         try {
             HttpClient client = HttpClient.newHttpClient();
             HttpRequest request = HttpRequest.newBuilder()
@@ -52,7 +52,7 @@ public class APIRetrievalStrategy implements RetrievalStrategy {
                     .header("Content-Type", "application/json")
                     .build();
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-            JsonObject responseLoad = new JsonParser().parse(response.body()).getAsJsonObject();
+            JsonObject responseLoad = JsonParser.parseString(response.body()).getAsJsonObject();
             JsonElement j = responseLoad.get("result").getAsJsonObject().get("random").getAsJsonObject().get("data");
             JsonArray arrayOfBits = j.getAsJsonArray().get(0).getAsJsonArray();
             for (int i=0; i<amount; i++){
