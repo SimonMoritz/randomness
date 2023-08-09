@@ -47,7 +47,7 @@ public class FileRetrievalStrategy implements RetrievalStrategy {
 
         } catch (IOException e){
             System.out.println("IO exception");
-            throw new RuntimeException(e);
+            throw new RuntimeException("can't write to file " + this.fileName + "-index.txt");
         }
         String stringBits = getSubstringFromFile(from,from + amount);
         int[] bits = new int[stringBits.length()];
