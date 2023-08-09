@@ -44,7 +44,6 @@ public class FileRetrievalStrategy implements RetrievalStrategy {
                 fw.write(Integer.toString(from + amount));
                 fw.close();
             }
-
         } catch (IOException e){
             System.out.println("IO exception");
             throw new RuntimeException("can't write to file " + this.fileName + "-index.txt");

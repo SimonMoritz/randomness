@@ -1,6 +1,7 @@
 import framework.RetrievalStrategy;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import randomness.APIRetrievalStrategy;
 import randomness.Generator;
 import randomness.FileRetrievalStrategy;
 
@@ -73,5 +74,15 @@ public class TestRandomness {
         //the second argument is a lambda function also an executable, this executable is then checked for runtime error
         RuntimeException e = assertThrows(RuntimeException.class, () -> r.getBitsFromExternalRG(52));
         assert (e.getMessage().equals("can't write to file " + "src/test/java/stubs/randomStubShouldHaveNoWritePermission" + "-index.txt"));
+    }
+
+    @Test
+    public void shouldUseAPICorrectly(){
+        APIRetrievalStrategy r = new APIRetrievalStrategy();
+        int[] bits = r.getBitsFromExternalRG(20);
+        assert (bits.length == 20);
+        for (int b : bits){
+            assert (b == 0 || b == 1);
+        }
     }
 }
