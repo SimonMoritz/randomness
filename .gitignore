@@ -46,3 +46,4 @@ bin/
 /.idea/
 ### API KEY ###
 /src/main/java/randomness/apikey.txt
+/src/main/java/randomness/load.json
