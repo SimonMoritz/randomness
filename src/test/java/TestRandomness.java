@@ -78,6 +78,18 @@ public class TestRandomness {
     }
 
     @Test
+    public void shouldGiveRandomNumbersInRange(){
+        RetrievalStrategy r = new FileRetrievalStrategy("src/main/java/randomTextFiles/2023-08-08");
+        Generator g = new Generator(r);
+        int[] numbers = g.getRandomNumbersInInterval(6, 10, 20);
+        assert (numbers.length == 20);
+        for (int n : numbers){
+            assert (n <= 10);
+            assert (6 <= n);
+        }
+    }
+
+    @Test
     public void shouldUseAPICorrectly(){
         APIRetrievalStrategy r = new APIRetrievalStrategy();
         int[] bits = r.getBitsFromExternalRG(20);
@@ -96,5 +108,12 @@ public class TestRandomness {
         for (int b : bits){
             assert (b == 0 || b == 1);
         }
+    }
+
+    @Test
+    public void shouldFailWithException(){
+        RetrievalStrategy r = new APIRetrievalStrategy();
+        Randomness g = new Generator(r);
+        assertThrows(Exception.class, () -> g.getRandomBits(-5));
     }
 }

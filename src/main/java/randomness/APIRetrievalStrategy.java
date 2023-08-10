@@ -18,7 +18,7 @@ public class APIRetrievalStrategy implements RetrievalStrategy {
     public String getAPIKey(){
         String key;
         try{
-            File f = new File("src/main/java/randomness/apikey.txt");
+            File f = new File("src/main/java/randomTextFiles/apikey.txt");
             Scanner sc = new Scanner(f);
             key = sc.nextLine();
         } catch (Exception e){
