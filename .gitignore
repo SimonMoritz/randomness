@@ -47,3 +47,6 @@ bin/
 ### API KEY ###
 /src/main/java/randomness/apikey.txt
 /src/main/java/randomness/load.json
+/src/main/java/randomTextFiles/apikey.txt
+### indices ###
+*-index.txt

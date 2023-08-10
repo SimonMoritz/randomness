@@ -17,13 +17,14 @@ public class Generator implements Randomness {
 
     @Override
     public int[] getRandomNumbersInInterval(int from, int to, int amount) {
-        int numberOfBits = (int) Math.ceil(1+(1/Math.log(2))*Math.log(to-from));
+        int numberOfBits = (int) Math.ceil((1/Math.log(2))*Math.log(to-from+1));
         int batchNumber = numberOfBits*amount;
         int[] temp;
         temp = getRandomBits(batchNumber);
         int i=0, j=0;
         int[] numbers = new int[amount];
-        // loop to calculate random numbers
+
+        // loop to calculate random numbers. the variable i is the index for random bits, while j is the index for random numbers calculated with the bits
         while (j<amount){
            if (i<batchNumber){
                int randNumber = 0;
